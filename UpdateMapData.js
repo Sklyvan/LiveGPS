@@ -3,9 +3,9 @@ import {getServerData} from "./ServerRequests.js";
 
 export function updateMapData()
 {
-    const fromDate = convertToServerDate(document.getElementById('initialDateButton').value);
+    const fromDate = document.getElementById('initialDateButton').value;
     const fromTime = document.getElementById('fromTime').innerHTML;
-    const toDate = convertToServerDate(document.getElementById('finalDateButton').value);
+    const toDate = document.getElementById('finalDateButton').value;
     const toTime = document.getElementById('toTime').innerHTML;
 
     let InformationGPS = getServerData(fromDate, fromTime, toDate, toTime);
