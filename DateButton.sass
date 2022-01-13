@@ -1,0 +1,125 @@
+$color: black
+$body-color: #ECF0F1
+$color1: #000000
+$color2: #0B6B2D
+$color3: #435A6B
+$color4: FF0000
+
+@import url('https://fonts.googleapis.com/css?family=Raleway')
+
+.button
+  position: relative
+  padding: 1em 1.5em
+  border: none
+  background-color: rgba(0,0,0, 0.05)
+  cursor: pointer
+  outline: none
+  font-size: 18px
+  margin: 1em 0.8em
+
+  &.type1
+    color: $color1
+    &.type1::after,
+    &.type1::before
+      content: ''
+      display: block
+      position: absolute
+      width: 20%
+      height: 20%
+      border: 2px solid
+      transition: all 0.6s ease
+      border-radius: 2px
+
+    &.type1::after
+      bottom: 0
+      right: 0
+      border-top-color: transparent
+      border-left-color: transparent
+      border-bottom-color: $color1
+      border-right-color: $color1
+
+    &.type1::before
+      top: 0
+      left: 0
+      border-bottom-color: transparent
+      border-right-color: transparent
+      border-top-color: $color1
+      border-left-color: $color1
+
+    &.type1:hover:after,
+    &.type1:hover:before
+      width: 100%
+      height: 100%
+
+  &.type2
+    color: $color2
+    &.type2:after,
+    &.type2:before
+      content: ''
+      display: block
+      position: absolute
+      top: 100%
+      left: 0
+      width: 100%
+      height: 2px
+      background-color: $color2
+      transition: all 0.3s ease
+
+    &.type2:hover:before
+      top: 0
+
+  &.type3
+    color: $color3
+    &.type3::after,
+    &.type3::before
+      content: ''
+      display: block
+      position: absolute
+      width: 20%
+      height: 20%
+      border: 2px solid
+      transition: all 0.6s ease
+      border-radius: 2px
+
+    &.type3::after
+      bottom: 0
+      right: 0
+      border-top-color: transparent
+      border-left-color: transparent
+      border-bottom-color: $color3
+      border-right-color: $color3
+
+    &.type3::before
+      top: 0
+      left: 0
+      border-bottom-color: transparent
+      border-right-color: transparent
+      border-top-color: $color3
+      border-left-color: $color3
+
+    &.type3:hover:after,
+    &.type3:hover:before
+      border-bottom-color: $color3
+      border-right-color: $color3
+      border-top-color: $color3
+      border-left-color: $color3
+      width: 100%
+      height: 100%
+
+  &.type4
+    color: $color4
+    &::after
+      content: ''
+      display: block
+      position: absolute
+      height: 2px
+      width: 0
+      left: 0
+      background-color: red
+      transition: width 0.3s ease-in-out
+
+    &::after
+      bottom: 0
+
+    &:hover::after
+      width: 50px

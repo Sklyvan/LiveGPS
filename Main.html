@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> <!-- Headers for Leaflet API -->
+
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script> <!-- Headers for date input buttons -->
+
+    <link rel="stylesheet" href="DateButton.css">
+    <meta charset="UTF-8">
+    <title>Live GPS</title>
+</head>
+
+<body>
+    <div id="KEY">cmm3C3yCX1jExK5nEp7f</div>
+    <div id="fromTime">00000000</div>
+    <div id="toTime">23595900</div>
+
+    <!-- YYMMDD, HHMMSS00, Latitude, Longitude, KM/H, Altitud, Direction, Quality, Satellites-->
+    <script src="ServerRequests.js" type="module"></script>
+
+    <div class="leaflet-top leaflet-right" style="pointer-events: auto;"> <!--- Map Buttons -->
+        <div class="dateButtons">
+            <button class="button type1" id="initialDateButton" onclick="initialDate.open()">Fecha Inicial</button>
+            <button class="button type1" id="finalDateButton" onclick="finalDate.open()">Fecha Final</button>
+            <br>
+            <button class="button type2" id="sendDateButton" style="float: right;" onclick="">Actualizar</button>
+        </div>
+
+        <script>
+            // Date buttons closes when the user clicks outside of the calendar and when a date is selected.
+            const initialDate = MCDatepicker.create({ el: '#initialDateButton', dateFormat: 'YYYY-MM-DD',
+                closeOnBlur: true, autoClose: true });
+
+            const finalDate = MCDatepicker.create({ el: '#finalDateButton', dateFormat: 'YYYY-MM-DD',
+                closeOnBlur: true, autoClose: true });
+
+            const currentDate = new Date(); // Ensure that initially the dates are the same.
+            initialDate.setFullDate(currentDate); finalDate.setFullDate(currentDate);
+        </script>
+    </div>
+
+    <div id="Map" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0;"> </div>
+    <script src="GenerateMap.js"></script>
+    <script type="module" id="updateData">
+        import {updateMapData} from "./UpdateMapData.js";
+        updateMapData();
+    </script>
+
+</body>
+
+</html>
