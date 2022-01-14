@@ -1,5 +1,4 @@
-import {convertToDate, convertToTime, cleanServerData, convertToTimezone} from "./ConvertionFunctions.js";
-import {getServerData} from "./ServerRequests.js";
+import {convertToDate, convertToTime, convertToTimezone} from "./ConvertionFunctions.js";
 
 export function updateMapData()
 {
@@ -8,8 +7,7 @@ export function updateMapData()
     const toDate = document.getElementById('finalDateButton').value;
     const toTime = document.getElementById('toTime').innerHTML;
 
-    let InformationGPS = getServerData(fromDate, fromTime, toDate, toTime);
-    InformationGPS = cleanServerData(InformationGPS);
+    const InformationGPS = document.getElementById('serverData').value;
 
     const datetime = InformationGPS.map(function (item) { return [item[0], item[1]]; });
     const latlngs = InformationGPS.map(function (item) { return [parseFloat(item[2]), parseFloat(item[3])]; });
