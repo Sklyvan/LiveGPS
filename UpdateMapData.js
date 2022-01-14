@@ -1,4 +1,4 @@
-import {convertToDate, convertToTime, convertToServerDate, cleanServerData, convertToTimezone} from "./ConvertionFunctions.js";
+import {convertToDate, convertToTime, cleanServerData, convertToTimezone} from "./ConvertionFunctions.js";
 import {getServerData} from "./ServerRequests.js";
 
 export function updateMapData()
@@ -19,7 +19,7 @@ export function updateMapData()
     const finalDate = convertToDate(datetime[latlngs.length - 1][0]); const finalTime = convertToTime(datetime[latlngs.length - 1][1]);
 
     L.marker(latlngs[0]).addTo(MainMap).bindPopup('Inicio: ' + convertToTimezone(initialDate, initialTime)).openPopup();
-    L.marker(latlngs[latlngs.length - 1]).addTo(MainMap).bindPopup('Final: ' + convertToTimezone(finalDate, finalTime)).openPopup();
+    L.marker(latlngs[latlngs.length - 1]).addTo(MainMap).bindPopup('Final: ' + convertToTimezone(finalDate, finalTime));
 
     if (latlngs.length > 0)
     {
