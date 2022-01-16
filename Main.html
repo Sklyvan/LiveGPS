@@ -15,8 +15,8 @@
 
 <body>
     <div id="KEY">cmm3C3yCX1jExK5nEp7f</div>
-    <div id="fromTime">00000000</div>
-    <div id="toTime">23595900</div>
+    <div id="initialTimeButton">00000000</div>
+    <div id="finalTimeButton">23595900</div>
     <div id="serverData"></div>
 
     <!-- YYMMDD, HHMMSS00, Latitude, Longitude, KM/H, Altitud, Direction, Quality, Satellites-->
@@ -58,8 +58,8 @@
             // Reading the date from the buttons.
             const fromDate = convertToServerDate(document.getElementById('initialDateButton').value);
             const toDate = convertToServerDate(document.getElementById('finalDateButton').value);
-            const fromTime = document.getElementById('fromTime').innerHTML;
-            const toTime = document.getElementById('toTime').innerHTML;
+            const fromTime = document.getElementById('initialTimeButton').innerHTML;
+            const toTime = document.getElementById('finalTimeButton').innerHTML;
 
             // Downloading the new data from the server.
             const serverData = getServerData(fromDate, fromTime, toDate, toTime);

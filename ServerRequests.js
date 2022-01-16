@@ -29,10 +29,11 @@ function cleanServerData(data)
     return data;
 }
 
-const fromDate_ = document.getElementById('initialDateButton').value;
-const fromTime_ = document.getElementById('fromTime').innerHTML;
-const toDate_ = document.getElementById('finalDateButton').value;
-const toTime_ = document.getElementById('toTime').innerHTML;
+const serverData = getServerData(
+    document.getElementById('initialDateButton').value,
+    document.getElementById('initialTimeButton').innerHTML,
+    document.getElementById('finalDateButton').value,
+    document.getElementById('finalTimeButton').innerHTML
+);
 
-const serverData = getServerData(fromDate_, fromTime_, toDate_, toTime_);
 document.getElementById('serverData').value = cleanServerData(serverData);
