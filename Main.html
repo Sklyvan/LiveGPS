@@ -20,14 +20,13 @@
     <div id="serverData"></div>
 
     <!-- YYMMDD, HHMMSS00, Latitude, Longitude, KM/H, Altitud, Direction, Quality, Satellites-->
-    <script src="ServerRequests.js" type="module"></script>
 
     <div class="leaflet-top leaflet-right" style="pointer-events: auto;"> <!--- Map Buttons -->
         <div class="dateButtons">
             <button class="button type1" id="initialDateButton" onclick="initialDate.open()">Fecha Inicial</button>
             <button class="button type1" id="finalDateButton" onclick="finalDate.open()">Fecha Final</button>
             <br>
-            <button class="button type2" id="sendDateButton" style="float: right;" onclick="">Actualizar</button>
+            <button class="button type2" id="sendDateButton" style="float: right;" onclick="CleanMapReadDateUpdateMap()">Actualizar</button>
         </div>
 
         <script>
@@ -39,6 +38,7 @@
                 closeOnBlur: true, autoClose: true });
 
             const currentDate = new Date(); // Ensure that initially the dates are the same.
+            // const yesterday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 1); // Using this for testing
             initialDate.setFullDate(currentDate); finalDate.setFullDate(currentDate);
         </script>
     </div>
@@ -46,9 +46,28 @@
     <div id="Map" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0;"> </div>
     <script src="GenerateMap.js"></script>
     <script src="transformToServerDate.js"></script>
-    <script type="module" id="updateData">
-        import {updateMapData} from "./UpdateMapData.js";
-        updateMapData();
+    <script src="ServerRequests.js"></script>
+    <script src="UpdateMapData.js"></script>
+    <script>
+        function CleanMapReadDateUpdateMap()
+        {
+            // Removing the markers and the lines from the map.
+            for (var i = 0; i < markers.length; i++) { markers[i].remove(); }
+            polyline.remove();
+
+            // Reading the date from the buttons.
+            const fromDate = convertToServerDate(document.getElementById('initialDateButton').value);
+            const toDate = convertToServerDate(document.getElementById('finalDateButton').value);
+            const fromTime = document.getElementById('fromTime').innerHTML;
+            const toTime = document.getElementById('toTime').innerHTML;
+
+            // Downloading the new data from the server.
+            const serverData = getServerData(fromDate, fromTime, toDate, toTime);
+            document.getElementById('serverData').value = cleanServerData(serverData);
+
+            // Updating the map with the new data.
+            updateMapData();
+        }
     </script>
 
 </body>

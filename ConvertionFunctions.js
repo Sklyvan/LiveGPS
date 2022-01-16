@@ -1,20 +1,3 @@
-export function convertToDate(YYMMDD)
-{
-    YYMMDD = YYMMDD.toString();
-    const YY = YYMMDD.substring(0, 2);
-    const MM = YYMMDD.substring(2, 4);
-    const DD = YYMMDD.substring(4, 6);
-    return DD + '/' + MM + '/20' + YY;
-}
-export function convertToTime(HHMMSSDD)
-{
-    HHMMSSDD = HHMMSSDD.toString();
-    const HH = HHMMSSDD.substring(0, 2);
-    const MM = HHMMSSDD.substring(2, 4);
-    const SS = HHMMSSDD.substring(4, 6);
-    return HH + ':' + MM + ':' + SS;
-}
-
 export function cleanServerData(data)
 {
     data = data.split('\n'); // Creating an array with the information.

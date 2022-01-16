@@ -1,17 +1,11 @@
-export function getServerData(fromDate, fromTime, toDate, toTime)
+function getServerData(fromDate, fromTime, toDate, toTime)
 {
     const httpRequest = new XMLHttpRequest();
     httpRequest.open('GET', 'http://agic-sl.com/GetData.php?fromDate='+fromDate+'&toDate='+toDate+'&fromTime='+fromTime+'&toTime='+toTime, false);
     httpRequest.send();
 
-    if (httpRequest.status === 200)
-    {
-        return httpRequest.response;
-    }
-    else
-    {
-        return httpRequest.status;
-    }
+    if (httpRequest.status === 200) {return httpRequest.response;}
+    else { return httpRequest.status; }
 }
 
 function cleanServerData(data)
@@ -35,10 +29,10 @@ function cleanServerData(data)
     return data;
 }
 
-const fromDate = document.getElementById('initialDateButton').value;
-const fromTime = document.getElementById('fromTime').innerHTML;
-const toDate = document.getElementById('finalDateButton').value;
-const toTime = document.getElementById('toTime').innerHTML;
+const fromDate_ = document.getElementById('initialDateButton').value;
+const fromTime_ = document.getElementById('fromTime').innerHTML;
+const toDate_ = document.getElementById('finalDateButton').value;
+const toTime_ = document.getElementById('toTime').innerHTML;
 
-const serverData = getServerData(fromDate, fromTime, toDate, toTime);
+const serverData = getServerData(fromDate_, fromTime_, toDate_, toTime_);
 document.getElementById('serverData').value = cleanServerData(serverData);

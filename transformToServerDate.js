@@ -18,8 +18,8 @@ function convertToServerTime(inputTime)
     return HH + MM + SS;
 }
 
-const fromDate = convertToServerDate(document.getElementById('initialDateButton').value);
-const toDate = convertToServerDate(document.getElementById('finalDateButton').value);
+var fromDate = convertToServerDate(document.getElementById('initialDateButton').value);
+var toDate = convertToServerDate(document.getElementById('finalDateButton').value);
 
 document.getElementById('initialDateButton').value = fromDate;
 document.getElementById('finalDateButton').value = toDate;
