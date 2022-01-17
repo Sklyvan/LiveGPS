@@ -1,32 +1,18 @@
-export function cleanServerData(data)
+function convertToDate(YYMMDD)
 {
-    data = data.split('\n'); // Creating an array with the information.
-    data.pop(); // Last element is empty.
-    data = data.map(function (item)
-    {
-        // Since some data is in the form of ENGINEINFO[......]
-        // we are going to start reading after the first bracket and before it.
-        let startReading = item.indexOf('[');
-        let endReading = item.indexOf(']');
-        let x = item.slice(startReading+1, endReading);
-        x = x.split(',');
-        x = x.filter(function (item)
-        {
-            return item.split(',');
-        });
-        return x;
-    });
-    return data;
+    YYMMDD = YYMMDD.toString();
+    const YY = YYMMDD.substring(0, 2);
+    const MM = YYMMDD.substring(2, 4);
+    const DD = YYMMDD.substring(4, 6);
+    return DD + '/' + MM + '/20' + YY;
 }
-
-export function convertToServerDate(inputDate)
+function convertToTime(HHMMSSDD)
 {
-    // Convert date in format YYYY-MM-DD to YYMMDD
-    let date = inputDate.split('-');
-    let YY = date[0].substring(2, 4);
-    let MM = date[1];
-    let DD = date[2];
-    return YY + MM + DD;
+    HHMMSSDD = HHMMSSDD.toString();
+    const HH = HHMMSSDD.substring(0, 2);
+    const MM = HHMMSSDD.substring(2, 4);
+    const SS = HHMMSSDD.substring(4, 6);
+    return HH + ':' + MM + ':' + SS;
 }
 
 function getTimezone()
@@ -37,7 +23,7 @@ function getTimezone()
     return timezone;
 }
 
-export function convertToTimezone(date, time)
+function convertToTimezone(date, time)
 {
     date = date.split('/');
     time = time.split(':');
@@ -62,4 +48,24 @@ export function convertToTimezone(date, time)
     if (SS < 10)
     { SS = '0' + SS; }
     return DD + '/' + MM + '/' + YY + ' ' + HH + ':' + MM2 + ':' + SS;
+}
+
+function convertToServerDate(inputDate)
+{
+    // Convert date in format YYYY-MM-DD to YYMMDD
+    let date = inputDate.split('-');
+    let YY = date[0].substring(2, 4);
+    let MM = date[1];
+    let DD = date[2];
+    return YY + MM + DD;
+}
+
+function convertToServerTime(inputTime)
+{
+    // Convert time in format HH:MM:SS to HHMMSS
+    let time = inputTime.split(':');
+    let HH = time[0];
+    let MM = time[1];
+    let SS = time[2];
+    return HH + MM + SS;
 }

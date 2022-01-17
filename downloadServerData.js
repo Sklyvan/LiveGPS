@@ -30,10 +30,10 @@ function cleanServerData(data)
 }
 
 const serverData = getServerData(
-    document.getElementById('initialDateButton').value,
-    document.getElementById('initialTimeButton').innerHTML,
-    document.getElementById('finalDateButton').value,
-    document.getElementById('finalTimeButton').innerHTML
+    document.getElementById('initialDateButton').value, // fromDate
+    document.getElementById('initialTimeButton').innerHTML, // fromTime
+    document.getElementById('finalDateButton').value, // toDate
+    document.getElementById('finalTimeButton').innerHTML // toTime
 );
 
 document.getElementById('serverData').value = cleanServerData(serverData);
