@@ -13,9 +13,6 @@ function updateMapData()
         const initialDate = convertToDate(datetime[0][0]); const initialTime = convertToTime(datetime[0][1]);
         const finalDate = convertToDate(datetime[latlngs.length - 1][0]); const finalTime = convertToTime(datetime[latlngs.length - 1][1]);
 
-        console.log(initialDate); console.log(initialTime);
-        console.log(finalDate); console.log(finalTime);
-
         let initialMaker = L.marker(latlngs[0]).addTo(MainMap);
         initialMaker.bindPopup('Inicio: ' + convertToLocalTimezone(initialDate, initialTime)).openPopup();
         let finalMarker = L.marker(latlngs[latlngs.length - 1]).addTo(MainMap);
@@ -25,7 +22,6 @@ function updateMapData()
         polyline = L.polyline(latlngs, {color: 'RED', opacity: 0.75, weight: 3}).addTo(MainMap);
         MainMap.fitBounds(polyline.getBounds());
     }
-    console.log("Map Updated");
 }
 
 updateMapData();
