@@ -33,13 +33,11 @@
             // Date buttons closes when the user clicks outside of the calendar and when a date is selected.
             const initialDate = MCDatepicker.create({ el: '#initialDateButton', dateFormat: 'YYYY-MM-DD',
                 closeOnBlur: true, autoClose: true });
-
             const finalDate = MCDatepicker.create({ el: '#finalDateButton', dateFormat: 'YYYY-MM-DD',
                 closeOnBlur: true, autoClose: true });
 
-            const currentDate = new Date(); // Ensure that initially the dates are the same.
-            // const yesterday = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 1); // Using this for testing
-            initialDate.setFullDate(currentDate); finalDate.setFullDate(currentDate);
+            const today = new Date(); const tomorrow = new Date(today.getDate() + 1);
+            initialDate.setFullDate(today); finalDate.setFullDate(tomorrow);
         </script>
     </div>
 
