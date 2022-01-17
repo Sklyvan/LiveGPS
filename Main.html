@@ -36,7 +36,8 @@
             const finalDate = MCDatepicker.create({ el: '#finalDateButton', dateFormat: 'YYYY-MM-DD',
                 closeOnBlur: true, autoClose: true });
 
-            const today = new Date(); const tomorrow = new Date(today.getDate() + 1);
+            var today = new Date(); var tomorrow = new Date();
+            tomorrow.setDate(today.getDate()+1);
             initialDate.setFullDate(today); finalDate.setFullDate(tomorrow);
         </script>
     </div>
