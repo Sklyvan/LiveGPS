@@ -23,7 +23,7 @@ function getTimezone()
     return timezone;
 }
 
-function convertToTimezone(date, time)
+function convertToLocalTimezone(date, time)
 {
     date = date.split('/');
     time = time.split(':');
@@ -31,6 +31,33 @@ function convertToTimezone(date, time)
     let timezone = getTimezone();
 
     currentDate.setHours(currentDate.getHours() + timezone);
+    // Transform currentdate to DD/MM/YYYY HH:MM:SS
+    let DD = currentDate.getDate();
+    let MM = currentDate.getMonth() + 1;
+    let YY = currentDate.getFullYear();
+    let HH = currentDate.getHours();
+    let MM2 = currentDate.getMinutes();
+    let SS = currentDate.getSeconds();
+    if (DD < 10) {DD = '0' + DD; }
+    if (MM < 10)
+    { MM = '0' + MM; }
+    if (HH < 10)
+    { HH = '0' + HH; }
+    if (MM2 < 10)
+    { MM2 = '0' + MM2; }
+    if (SS < 10)
+    { SS = '0' + SS; }
+    return DD + '/' + MM + '/' + YY + ' ' + HH + ':' + MM2 + ':' + SS;
+}
+
+function convertToUTCTimezone(date, time)
+{
+    date = date.split('/');
+    time = time.split(':');
+    let currentDate = new Date(date[2], date[1] - 1, date[0], time[0], time[1], time[2], 0);
+    let timezone = getTimezone();
+
+    currentDate.setHours(currentDate.getHours() - timezone);
     // Transform currentdate to DD/MM/YYYY HH:MM:SS
     let DD = currentDate.getDate();
     let MM = currentDate.getMonth() + 1;
