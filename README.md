@@ -14,3 +14,5 @@ Then, you just have to run the Main.html file.
 ```shell
 http://localhost:63342/LiveGPS/Main.html
 ```
+
+![](./Resources/Screenshot.png)
