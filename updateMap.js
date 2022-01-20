@@ -14,7 +14,7 @@ function updateMapData()
         const finalDate = convertToDate(datetime[latlngs.length - 1][0]); const finalTime = convertToTime(datetime[latlngs.length - 1][1]);
 
         let initialMaker = L.marker(latlngs[0]).addTo(MainMap);
-        initialMaker.bindPopup('Inicio: ' + convertToLocalTimezone(initialDate, initialTime)).openPopup();
+        initialMaker.bindPopup('Inicio: ' + convertToLocalTimezone(initialDate, initialTime));
         let finalMarker = L.marker(latlngs[latlngs.length - 1]).addTo(MainMap);
         finalMarker.bindPopup('Final: ' + convertToLocalTimezone(finalDate, finalTime));
         markers = [initialMaker, finalMarker];
