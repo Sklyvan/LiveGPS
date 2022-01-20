@@ -12,7 +12,7 @@ cd LiveGPS
 Then, you just have to run the Main.html file.
 
 ```shell
-http://localhost:63342/LiveGPS/Main.html
+http://localhost:63342/LiveGPS/index.html
 ```
 
 ![](./Resources/Screenshot.png)
