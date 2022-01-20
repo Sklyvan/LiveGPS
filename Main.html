@@ -20,10 +20,10 @@
     <div id="initialTimeButton">06000000</div>
     <div id="finalTimeButton">06000000</div>
     <div id="serverData"></div>
-
     <!-- YYMMDD, HHMMSS00, Latitude, Longitude, KM/H, Altitud, Direction, Quality, Satellites-->
 
     <div class="leaflet-top leaflet-right" style="pointer-events: auto;"> <!--- Map Buttons -->
+
         <div class="dateButtons">
             <button class="button type1" id="initialDateButton" onclick="initialDate.open()">Fecha Inicial</button>
             <button class="button type1" id="finalDateButton" onclick="finalDate.open()">Fecha Final</button>
@@ -42,6 +42,7 @@
             var today = new Date(); var tomorrow = new Date();
             tomorrow.setDate(today.getDate()+1);
             initialDate.setFullDate(today); finalDate.setFullDate(tomorrow);
+
         </script>
     </div>
 
@@ -71,6 +72,11 @@
             // Updating the map with the new data.
             updateMapData();
         }
+    </script>
+
+    <!--- Creates a function that calls to CleanMapReadDateUpdateMap() every 1 second. -->
+    <script>
+        setInterval(CleanMapReadDateUpdateMap, 10000);
     </script>
 
 </body>
