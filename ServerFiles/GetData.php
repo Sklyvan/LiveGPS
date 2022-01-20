@@ -26,13 +26,35 @@
 		$quality = $currentData[7];
 		$satellites = $currentData[8];
 
-		if (($calendarDate >= $fromDate) AND ($calendarDate <= $toDate))
+		if (($calendarDate > $fromDate) AND ($calendarDate < $toDate))
 		{
-			if (($calendarClock >= $fromTime) AND ($calendarClock <= $toTime))
+			echo $row['d'];
+		}
+
+		else if (($calendarDate == $fromDate) AND ($calendarDate == $toDate))
+		{
+			if (($calendarClock >= $fromTime) AND ($calendarClock >= $toTime))
 			{
 				echo $row['d'];
 			}
 		}
+
+		else if ($calendarDate == $fromDate)
+		{
+			if ($calendarClock >= $fromTime)
+			{
+				echo $row['d'];
+			}
+		}
+
+		else if ($calendarDate == $toDate)
+		{
+			if ($calendarClock >= $toTime)
+			{
+				echo $row['d'];
+			}
+		}
+
 		// http://agic-sl.com/GetData.php?fromDate=210928&toDate=210929&fromTime=11493200&toTime=12493300
 	}
 
