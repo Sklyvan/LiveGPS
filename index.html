@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div id="KEY"></div>
+    <div id="KEY">cmm3C3yCX1jExK5nEp7f</div>
     <div id="initialTimeButton">06000000</div>
     <div id="finalTimeButton">06000000</div>
     <div id="serverData"></div>
@@ -58,7 +58,7 @@
         {
             // Removing the markers and the lines from the map.
             for (var i = 0; i < markers.length; i++) { markers[i].remove(); }
-            polyline.remove();
+            for (var i = 0; i < polylines.length; i++) { polylines[i].remove(); }
 
             // Reading the date from the buttons.
             const fromDate = convertToServerDate(document.getElementById('initialDateButton').value);

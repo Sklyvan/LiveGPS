@@ -1,4 +1,4 @@
-var markers; var polyline;
+var markers = []; var polylines = [];
 var fitMap = true;
 function updateMapData()
 {
@@ -22,8 +22,9 @@ function updateMapData()
         {
             let x1 = latlngs[i]; let x2 = latlngs[i + 1];
             let polyline = L.polyline([x1, x2], { color: 'RED', opacity: 0.75 }).addTo(MainMap);
+            polylines.push(polyline);
         }
-        polyline = L.polyline(latlngs);
+        let polyline = L.polyline(latlngs);
         if (fitMap) MainMap.fitBounds(polyline.getBounds());
     }
 }
