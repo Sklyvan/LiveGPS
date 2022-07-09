@@ -16,6 +16,16 @@ function updateMapData()
         initialMaker.bindPopup('Inicio: ' + convertToLocalTimezone(initialDate, initialTime));
         let finalMarker = L.marker(latlngs[latlngs.length - 1]).addTo(MainMap);
         finalMarker.bindPopup('Final: ' + convertToLocalTimezone(finalDate, finalTime));
+
+        finalMarker.setIcon(L.icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        }));
+
+
         markers = [initialMaker, finalMarker];
         // For every element inside latlngs, create a marker
         for (let i = 0; i < latlngs.length-1; i++)
@@ -24,8 +34,14 @@ function updateMapData()
             let polyline = L.polyline([x1, x2], { color: 'RED', opacity: 0.75 }).addTo(MainMap);
             polylines.push(polyline);
         }
-        let polyline = L.polyline(latlngs);
-        if (fitMap) MainMap.fitBounds(polyline.getBounds());
+
+        if (fitMap)
+        {
+            let polyline = L.polyline(latlngs);
+            MainMap.fitBounds(polyline.getBounds());
+            // MainMap.setZoom(15);
+            MainMap.setZoomAround(latlngs[latlngs.length - 1], 15);
+        }
     }
 }
 
