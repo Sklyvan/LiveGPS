@@ -39,8 +39,7 @@ function updateMapData()
         {
             let polyline = L.polyline(latlngs);
             MainMap.fitBounds(polyline.getBounds());
-            // MainMap.setZoom(15);
-            MainMap.setZoomAround(latlngs[latlngs.length - 1], 15);
+            MainMap.setZoomAround(latlngs[latlngs.length - 1], 14);
         }
     }
 }
