@@ -11,6 +11,7 @@ function updateMapData()
         const speed = InformationGPS.map(function (item) { return parseFloat(item[4]); });
         const initialDate = convertToDate(datetime[0][0]); const initialTime = convertToTime(datetime[0][1]);
         const finalDate = convertToDate(datetime[latlngs.length - 1][0]); const finalTime = convertToTime(datetime[latlngs.length - 1][1]);
+        const status = InformationGPS.map(function (item) { return item[9]; });
 
         let initialMaker = L.marker(latlngs[0]).addTo(MainMap);
         initialMaker.bindPopup('Inicio: ' + convertToLocalTimezone(initialDate, initialTime));
@@ -38,8 +39,7 @@ function updateMapData()
         if (fitMap)
         {
             let polyline = L.polyline(latlngs);
-            MainMap.fitBounds(polyline.getBounds());
-            MainMap.setZoomAround(latlngs[latlngs.length - 1], 14);
+            MainMap.fitBounds(polyline.getBounds()).zoomIn(0.5);
         }
     }
 }

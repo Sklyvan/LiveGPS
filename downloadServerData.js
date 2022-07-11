@@ -18,12 +18,21 @@ function cleanServerData(data)
         // we are going to start reading after the first bracket and before it.
         let startReading = item.indexOf('[');
         let endReading = item.indexOf(']');
+
+        let status = 'null';
+        // Check if there is content before the first bracket.
+        if (startReading != 0)
+        {
+           status = item.substring(0, startReading);
+        }
+
         let x = item.slice(startReading+1, endReading);
         x = x.split(',');
         x = x.filter(function (item)
         {
             return item.split(',');
         });
+        x.push(status);
         return x;
     });
     return data;
