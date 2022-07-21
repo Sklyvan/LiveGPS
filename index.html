@@ -29,6 +29,7 @@
             <button class="button type1" id="finalDateButton" onclick="finalDate.open()">Fecha Final</button>
             <br>
             <button class="button type2" id="sendDateButton" style="float: right;" onclick="CleanMapReadDateUpdateMap()">Actualizar</button>
+
         </div>
 
         <script>
@@ -42,8 +43,13 @@
             var today = new Date(); var tomorrow = new Date();
             tomorrow.setDate(today.getDate()+1);
             initialDate.setFullDate(today); finalDate.setFullDate(tomorrow);
-
         </script>
+    </div>
+
+    <div class="leaflet-bottom leaflet-left" style="pointer-events: auto;"> <!--- KM Counters -->
+        <button class="button type6" id="DistanceOCU"></button>
+        <br>
+        <button class="button type5" id="DistanceLIB"></button>
     </div>
 
     <div id="Map" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0;"> </div>
