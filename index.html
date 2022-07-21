@@ -41,8 +41,15 @@
 
             // Sets the initial and final dates to today and tomorrow.
             var today = new Date(); var tomorrow = new Date();
+
+            // If the hour is less than 06:00:00 then the date is set to yesterday.
+            if (today.getHours() < 6)
+            {
+                today.setDate(today.getDate() - 1);
+            }
             tomorrow.setDate(today.getDate()+1);
             initialDate.setFullDate(today); finalDate.setFullDate(tomorrow);
+
         </script>
     </div>
 
