@@ -36,6 +36,7 @@
     .button.type1.type1:hover:after, .button.type1.type1:hover:before {
       width: 100%;
       height: 100%; }
+
   .button.type2 {
     color: #0B6B2D; }
     .button.type2.type2:after, .button.type2.type2:before {
@@ -50,6 +51,7 @@
       transition: all 0.3s ease; }
     .button.type2.type2:hover:before {
       top: 0; }
+
   .button.type3 {
     color: #435A6B; }
     .button.type3.type3::after, .button.type3.type3::before {
@@ -82,6 +84,7 @@
       border-left-color: #435A6B;
       width: 100%;
       height: 100%; }
+
   .button.type4 {
     color: FF0000; }
     .button.type4::after {
@@ -97,5 +100,71 @@
       bottom: 0; }
     .button.type4:hover::after {
       width: 50px; }
+
+  .button.type5 {
+    color: #000000; }
+  .button.type5.type5::after, .button.type5.type5::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px; }
+  .button.type5.type5::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #5da431;
+    border-right-color: #5da431; }
+  .button.type5.type5::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #5da431;
+    border-left-color: #5da431; }
+  .button.type5.type5:hover:after, .button.type5.type5:hover:before {
+    border-bottom-color: #5da431;
+    border-right-color: #5da431;
+    border-top-color: #5da431;
+    border-left-color: #5da431;
+    width: 100%;
+    height: 100%; }
+
+  .button.type6 {
+    color: #000000; }
+  .button.type6.type6::after, .button.type6.type6::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border: 2px solid;
+    transition: all 0.6s ease;
+    border-radius: 2px; }
+  .button.type6.type6::after {
+    bottom: 0;
+    right: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: #c72e2e;
+    border-right-color: #c72e2e; }
+  .button.type6.type6::before {
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: #c72e2e;
+    border-left-color: #c72e2e; }
+  .button.type6.type6:hover:after, .button.type6.type6:hover:before {
+    border-bottom-color: #c72e2e;
+    border-right-color: #c72e2e;
+    border-top-color: #c72e2e;
+    border-left-color: #c72e2e;
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=DateButton.css.map */
