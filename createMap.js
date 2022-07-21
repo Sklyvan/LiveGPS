@@ -1,4 +1,4 @@
-var MainMap = L.map('Map').setView([0, 0], 0);
+var MainMap = L.map('Map', { zoomControl: false }).setView([0, 0], 0);
 const secretKey = document.getElementById('KEY').innerHTML;
 const homeLocation = L.latLng(0, 0);
 
