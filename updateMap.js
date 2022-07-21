@@ -89,7 +89,6 @@ function updateMapData()
             polylines.push(polyline);
         }
 
-        console.log('OCU: ' + ocuDistance + ' KM');
         ocuDistance = Math.round(ocuDistance * 100) / 100;
         libDistance = Math.round(libDistance * 100) / 100;
 
