@@ -1,5 +1,26 @@
 var markers = []; var polylines = [];
 var fitMap = true;
+
+function deg2rad(deg)
+{
+    return deg * (Math.PI / 180);
+}
+
+function calculateDistance(P1, P2)
+{
+    let R = 6371; // Radius of the earth in km
+    let dLat = deg2rad(P2[0] - P1[0]);
+    let dLon = deg2rad(P2[1] - P1[1]);
+    let a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(P1[0])) * Math.cos(deg2rad(P2[0])) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
+        ;
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let d = R * c; // Distance in km
+    return d;
+}
+
 function updateMapData()
 {
     const InformationGPS = document.getElementById('serverData').value;
@@ -40,6 +61,7 @@ function updateMapData()
         markers = [initialMaker, finalMarker];
         // For every element inside latlngs, create a marker
         var CurrentStatus = status[0]; // We use this variable to check if the status has changed.
+        var ocuDistance = 0; var libDistance = 0; // We use these variable to store the amount of kilometers that the vehicle has traveled in OCU and LIB.
         for (let i = 0; i < latlngs.length-1; i++)
         {
             let P1 = latlngs[i]; let P2 = latlngs[i + 1];
@@ -53,10 +75,12 @@ function updateMapData()
             if (CurrentStatus == 'OCU')
             {
                 polyline = L.polyline([P1, P2], { color: 'RED', opacity: 1 }).addTo(MainMap);
+                ocuDistance += calculateDistance(P1, P2);
             }
             else if (CurrentStatus == 'LIB')
             {
                 polyline = L.polyline([P1, P2], { color: 'GREEN', opacity: 1 }).addTo(MainMap);
+                libDistance += calculateDistance(P1, P2);
             }
             else
             {
@@ -64,6 +88,26 @@ function updateMapData()
             }
             polylines.push(polyline);
         }
+
+        console.log('OCU: ' + ocuDistance + ' KM');
+        ocuDistance = Math.round(ocuDistance * 100) / 100;
+        libDistance = Math.round(libDistance * 100) / 100;
+
+        // If the value is smaller than 10, we add a 0 before the number.
+        if (ocuDistance < 10)
+            ocuDistance = '0' + ocuDistance;
+        if (libDistance < 10)
+            libDistance = '0' + libDistance;
+
+        // If there is just one decimal, we add a 0 to the end of the number.
+        if (ocuDistance % 1 == 0)
+            ocuDistance = ocuDistance + '.00';
+        if (libDistance % 1 == 0)
+            libDistance = libDistance + '.00';
+
+        // Export this values to the HTML page
+        document.getElementById('DistanceOCU').innerHTML = ocuDistance + ' KM';
+        document.getElementById('DistanceLIB').innerHTML = libDistance + ' KM';
 
         if (fitMap)
         {
