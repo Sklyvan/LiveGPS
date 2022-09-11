@@ -4,7 +4,7 @@ const homeLocation = L.latLng(0, 0);
 
 var homeMarker = L.marker(homeLocation).addTo(MainMap);
 homeMarker.setIcon(L.icon({
-    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
