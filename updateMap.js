@@ -49,15 +49,6 @@ function updateMapData()
         let finalMarker = L.marker(latlngs[latlngs.length - 1]).addTo(MainMap);
         finalMarker.bindPopup('Final: ' + convertToLocalTimezone(finalDate, finalTime));
 
-
-        finalMarker.setIcon(L.icon({
-            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        }));
-
         markers = [initialMaker, finalMarker];
         // For every element inside latlngs, create a marker
         var CurrentStatus = status[0]; // We use this variable to check if the status has changed.
@@ -88,6 +79,26 @@ function updateMapData()
             }
             polylines.push(polyline);
         }
+        if (CurrentStatus == 'OCU')
+        {
+            markerURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png';
+        }
+        else if (CurrentStatus == 'LIB')
+        {
+            markerURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+        }
+        else
+        {
+            markerURL = 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png';
+        }
+
+        finalMarker.setIcon(L.icon({
+            iconUrl: markerURL,
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        }));
 
         ocuDistance = Math.round(ocuDistance * 100) / 100;
         libDistance = Math.round(libDistance * 100) / 100;
